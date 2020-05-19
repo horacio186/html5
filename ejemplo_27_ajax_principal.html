@@ -29,8 +29,9 @@
 <script>
 
 $(document).ready(function() {
-	var url = $(this).attr("href"); 
+	
 	$("#noticias a").click(function(){
+		var url = $(this).attr("href"); 
 		$("#contenidos_externos").load(url + " #noticia"); 
 		// deshabilita el comportamiento por defecto para que no se ejecute el href
 		return false;
