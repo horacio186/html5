@@ -32,10 +32,11 @@ $(document).ready(function() {
 	$("#login").submit(function() {
 
 		//Los datos deben ser enviados al servidor,  hay q empaquetarlo (objeto literal)
-		var datosFormulario = {
+		/*var datosFormulario = {
 			usuario:$("#usuario").val(),
 			contra: $("#contra").val()
-		}
+		}*/
+		var datosFormulario = $(this).serialize();
 		// enviamos la info al servidor
 		$.get("login.php", datosFormulario, procesarDatos);
 		// para que no se cargue la pagina nuevamente
