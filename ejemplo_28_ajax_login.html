@@ -29,7 +29,27 @@
 <script>
 
 $(document).ready(function() {
+	$("#login").submit(function() {
 
+		//Los datos deben ser enviados al servidor,  hay q empaquetarlo (objeto literal)
+		var datosFormulario = {
+			usuario:$("#usuario").val(),
+			contra: $("#contra").val()
+		}
+		// enviamos la info al servidor
+		$.get("login.php", datosFormulario, procesarDatos);
+		// para que no se cargue la pagina nuevamente
+		return false;
+	});
+
+	function procesarDatos(datos_devueltos){
+
+		if(datos_devueltos=="autorizado") {
+			$("#contenidos_externos").html("<p>Usuario correcto. Bienvenido de nuevo</p>");
+		} else {
+			$("#contenidos_externos").html("<p>Usuario no autorizado</p>");
+		}
+	}
 			
 }); 
 </script>
