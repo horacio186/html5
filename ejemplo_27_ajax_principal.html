@@ -29,9 +29,9 @@
 <script>
 
 $(document).ready(function() {
-
+	var url = $(this).attr("href"); 
 	$("#noticias a").click(function(){
-		$("#contenidos_externos").load("ejemplo_27_ajax_deportivas.html #noticia");
+		$("#contenidos_externos").load(url + " #noticia"); 
 		// deshabilita el comportamiento por defecto para que no se ejecute el href
 		return false;
 	});
