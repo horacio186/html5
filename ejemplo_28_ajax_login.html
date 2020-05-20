@@ -38,7 +38,7 @@ $(document).ready(function() {
 		}*/
 		var datosFormulario = $(this).serialize();
 		// enviamos la info al servidor
-		$.get("login.php", datosFormulario, procesarDatos);
+		$.get("login.php", datosFormulario, procesarDatos).error(ProcesarError);
 		// para que no se cargue la pagina nuevamente
 		return false;
 	});
@@ -51,7 +51,13 @@ $(document).ready(function() {
 			$("#contenidos_externos").html("<p>Usuario no autorizado</p>");
 		}
 	}
-			
+	
+	function ProcesarError() {
+
+		var msgerror = "Ooops ! Ha ocurrido algo inesperado. Inténtalo más tarde.";
+		$("#contenidos_externos").html("<p>" + msgerror + "/<p>");
+
+	}
 }); 
 </script>
 </head>
