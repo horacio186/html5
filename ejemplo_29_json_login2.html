@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Noticias varias</title>
+<link href="css/externa.css" rel="stylesheet">
+<style>
+#noticias li {
+	display: inline-block;
+	margin-right: 30px;
+}
+#noticias li a {
+	padding: 5px 10px; 
+	background-color: white;
+	color: black;
+	text-decoration: none;	
+}
+#noticias li a:hover {
+	background-color: rgb(255,153,0);
+	color: white;
+}
+#contenidos_externos #noticia {
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid white;	
+}
+</style>
+<script src="Jquery/jQuery-2.1.4.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	$("#login").submit(function(){
+		
+		/*var datosFormulario={usuario:$("#usuario").val(),
+		                     contra:$("#contra").val()}	*/
+							 
+		var datosFormulario=$(this).serialize();
+							 
+		$.getJSON("login2.php", datosFormulario, procesarDatos);
+		
+		return false;
+		
+		
+	});
+	
+	function procesarDatos(datos_devueltos){		
+		
+		$("#contenidos_externos").html(datos_devueltos.Edad);
+				
+	}
+	
+				
+}); 
+</script>
+</head>
+<body>
+
+	<div class="cabecera">
+		<p class="logo">Procesando respuesta del servidor</p>
+	</div>
+	<div class="contenido">
+		<div class="principal">
+			<form method="get" action="login2.php" id="login">
+            <table>
+            	<tr>
+                	<td>					
+						<label for="usuario">Usuario:</label>
+                    </td>
+                    <td>
+						<input type="text" name="usuario" id="usuario">
+					</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                     <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td colspan="2" align="center">
+						<input type="submit" name="boton" id="boton" value="Enviar" >
+					</td>
+                    </tr>
+                    </table>
+				</form>
+			<div id="contenidos_externos"></div>
+		</div>
+	</div>
+
+</body>
+</html>
